@@ -3,14 +3,14 @@
 <package format="3">
   <name>algorithms</name>
   <version>2.0.0</version>
-  <description>
-    Your Task 1 solutions. Copy a boilerplate from boilerplate/ into the matching
-    folder under scripts/ using your own file name, and add that copy to setup.py.
-  </description>
+  <description>StrataCobot Task 1 and Task 2A solution nodes.</description>
   <maintainer email="support@e-yantra.org">e-Yantra</maintainer>
   <license>Apache-2.0</license>
 
   <exec_depend>rclpy</exec_depend>
+  <exec_depend>cv_bridge</exec_depend>
+  <exec_depend>python3-opencv</exec_depend>
+  <exec_depend>python3-numpy</exec_depend>
   <exec_depend>geometry_msgs</exec_depend>
   <exec_depend>sensor_msgs</exec_depend>
   <exec_depend>std_msgs</exec_depend>

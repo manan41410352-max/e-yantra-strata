@@ -1,60 +1,93 @@
-# e-Yantra Robotics Competition 2026-27 — StrataCobot (SC)
+# e-Yantra StrataCobot — Team 6131
 
-Ubuntu 24.04 · ROS 2 Jazzy · Gazebo Harmonic
+ROS 2 Jazzy · Gazebo Harmonic
 
-The task pages are the full instructions. This page is the short version.
+Task 2A scored **50/50 in two fresh-world evaluations**, with all eight pickups
+succeeding on their first attempt and no protective stops. See the
+[evaluation records](validation/task2a/README.md) and
+[complete run and submission instructions](TASK2A_RUN.md).
 
-## 1. Install and build
+## Workspace
 
-From this directory, with ROS 2 Jazzy already installed:
+| Task | Solution |
+| --- | --- |
+| 1A | [task1A.py](src/algorithms/scripts/task1a/task1A.py) |
+| 1B | [task1B.py](src/algorithms/scripts/task1b/task1B.py) |
+| 1C | [task1C.py](src/algorithms/scripts/task1c/task1C.py) |
+| 2A perception | [task2A_perception.py](src/algorithms/scripts/task2a/task2A_perception.py) |
+| 2A manipulation | [task2A_manipulation.py](src/algorithms/scripts/task2a/task2A_manipulation.py) |
+
+The repository root is the ROS workspace. ROS packages and the evaluator are in
+`src/`. The simulator assets and original history come from the official
+[e-Yantra repository](https://github.com/eYantra-Robotics-Competition/eYRC_26-27_Strata-Cobot).
+Existing notices and the [UR description license](src/ur_description/LICENSE)
+are retained.
+
+## Set up a fresh machine
+
+Use Ubuntu 24.04 with ROS 2 Jazzy installed. Clone into a new `~/ros2_ws` directory:
 
 ```bash
+git clone https://github.com/manan41410352-max/e-yantra-strata.git ~/ros2_ws
+cd ~/ros2_ws
 ./requirements.sh
-cd ..
+```
+
+## Build
+
+```bash
+cd ~/ros2_ws
+source /opt/ros/jazzy/setup.bash
 colcon build
 source install/setup.bash
 ```
 
-## 2. Start a world
+Source ROS and the workspace in each new terminal before running ROS commands.
 
-Each subtask has its own launch file. Leave it running in its own terminal.
+## Run Task 2A
+
+Start your screen recorder before the launch. Use four terminals and leave the world
+running throughout the attempt.
+
+Terminal 1:
 
 ```bash
-ros2 launch eyantra_kepler_colony task2a.launch.py   # Task 2A
-ros2 launch eyantra_kepler_colony task2b.launch.py   # Task 2B
+source /opt/ros/jazzy/setup.bash
+source ~/ros2_ws/install/setup.bash
+ros2 launch eyantra_kepler_colony task2a.launch.py
 ```
 
-Wait for `Task 2A world ready` or `Task 2B world ready` before going on.
+Wait for `Task 2A world ready: Start your nodes now.`
 
-## 3. Your scripts
-
-Your code goes in the **`algorithms`** package, under these names:
-
-| Subtask | Folder | Scripts |
-|---|---|---|
-| 2A | `algorithms/scripts/task2a/` | `task2A_perception.py`, `task2A_manipulation.py` |
-| 2B | `algorithms/scripts/task2b/` | `task2B_planning.py`, `task2B_navigation.py` |
-
-For each script: make it executable (`chmod +x`), add its path to `SCRIPTS` in
-`algorithms/setup.py` (e.g. `'scripts/task2a/task2A_perception.py'`), then rebuild and run it:
+Terminal 2:
 
 ```bash
-colcon build --packages-select algorithms
-source install/setup.bash
+source /opt/ros/jazzy/setup.bash
+source ~/ros2_ws/install/setup.bash
+cd ~/ros2_ws/src
+./eyrc-sc-evaluator --task 2A --team-id 6131
+```
+
+Wait for the evaluator's `Ready` message before starting either node.
+
+Terminal 3:
+
+```bash
+source /opt/ros/jazzy/setup.bash
+source ~/ros2_ws/install/setup.bash
 ros2 run algorithms task2A_perception.py
 ```
 
-Rebuild and re-source after every edit: `ros2 run` starts the installed copy.
+Terminal 4:
 
-## 4. Evaluate and submit
+```bash
+source /opt/ros/jazzy/setup.bash
+source ~/ros2_ws/install/setup.bash
+ros2 run algorithms task2A_manipulation.py
+```
 
-1. Start the world and wait for its ready line.
-2. In another terminal: `./eyrc-sc-evaluator --task 2A --team-id <YOUR_TEAM_ID>` (or `--task 2B`).
-3. When the evaluator prints `Ready`, start your two scripts.
-4. Press `q` in the evaluator when the run is done. It writes `result.zip`. Do not unpack or edit it.
-5. Zip `result.zip` with your two scripts and upload it, named as the submission page says.
-
----
-
-The UR7e description in `ur_description` is modified by e-Yantra from the upstream
-Universal Robots ROS 2 description; see `ur_description/LICENSE`.
+Let both nodes run until the arm finishes sorting. Press `q` in the evaluator. It writes
+`result.zip` under `src/SC-<YOUR_TEAM_ID>-task-2A/`; do not unpack or edit it. Submit
+that untouched file and copies of both scripts together in
+`SC#<YOUR_TEAM_ID>_task2A.zip`, with all three files at the archive root. Upload the
+recording as an Unlisted YouTube video and provide its URL on the portal.

@@ -1,0 +1,65 @@
+
+==================================================================
+  e-Yantra StrataCobot 2026-27  |  Task 2 Evaluator
+  eyrc-sc-evaluator 2.1  |  records your run and scores it
+==================================================================
+
+
+This run
+  Subtask: 2A           given as --task, and the world running
+  Team ID: 6131         given as --team-id
+
+Checking the simulation
+  [PASS] All monitored topics are live
+  [PASS] Simulation is running  (sim time advanced 1.00 s while checking)
+  [PASS] Arena monitor is reporting
+  [PASS] This is the Task 2A world  (eyantra_kepler_colony/task2a.launch.py)
+  [PASS] Four ores on the conveyor
+  [PASS] Arm is at its mount
+  [PASS] Arm servo is running  (/ur_arm_controller)
+  [PASS] One publisher per simulator topic
+  [PASS] Arm software version  (ur_arm_controller 2.1)
+  [PASS] Arm description unmodified
+  [PASS] Arm controller runs as shipped
+  [PASS] Arm is healthy  (OK)
+  [PASS] Input controller active  (delta_twist_controller)
+  [PASS] Arm is in its start pose, at rest
+  [PASS] Nothing else is driving the arm
+  [PASS] No ore transform is published yet
+  [PASS] No motion-planning stack
+  [PASS] The simulation runs this release's binaries
+  Replacing the previous result in /home/manan/ros2_ws/src/SC-6131-task-2A
+  Only the latest run is kept. If you had already copied your scripts in there,
+  copy them again after this run.
+
+
+Recording
+  Everything the simulator reports is being recorded.
+
+  Ready
+  Start your two nodes now. Press q once the arm has finished.
+  Publish each ore's transform while it is on the conveyor; drop each in the container for its kind, and let the last one settle before pressing q.
+
+
+  Scoring the recording.
+
+==================================================================
+  Result
+==================================================================
+
+  Marks:  50 / 50
+
+  CD 14/14, SP 18/18, SD 18/18, AC 0. Total 50/50. Task 2A complete: all
+  four ores detected, picked and dropped in their own containers, with no
+  protective stop. Well done!
+
+------------------------------------------------------------------
+
+  /home/manan/ros2_ws/src/SC-6131-task-2A/result.zip
+
+  Copy your two scripts, task2A_perception.py and task2A_manipulation.py, next to that zip,
+  then compress the THREE FILES together and upload the result. The task page has the
+  name to use.
+
+  Do not unpack or rebuild result.zip -- it is signed, and editing it makes it unreadable.
+

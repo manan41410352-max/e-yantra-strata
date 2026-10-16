@@ -1,0 +1,24 @@
+[INFO] [1792133317.972823720] [task2a_manipulation]: Task 2A manipulation ready; waiting for arm feedback and Task 2A transforms.
+[INFO] [1792133318.601044175] [task2a_manipulation]: Switching arm control to delta_joint_controller.
+[INFO] [1792133330.260256007] [task2a_manipulation]: Switching arm control to delta_twist_controller.
+[INFO] [1792133330.360801115] [task2a_manipulation]: Picking azurite_ore_1 at (-0.278, -0.702, -0.062); dropping at (-0.010, 0.688, 0.040).
+[INFO] [1792133357.360463466] [task2a_manipulation]: Pickup check azurite_ore_1: force=1.4546051025390625, tool=(-0.275, -0.701, -0.062), target=(-0.275, -0.701, -0.062).
+[INFO] [1792133357.360734232] [task2a_manipulation]: Checking whether azurite_ore_1 follows the magnet; offset=+0.000 m, force=1.4546051025390625, tilt=0.00 deg, tool=(-0.275, -0.701, -0.062), target=(-0.275, -0.701, -0.062).
+[INFO] [1792133361.360340800] [task2a_manipulation]: azurite_ore_1 pickup confirmed after lift (ore_followed=False, force=1.4655015468597412); carrying it.
+[INFO] [1792133402.444176561] [task2a_manipulation]: azurite_ore_1 released in its container (1/4).
+[INFO] [1792133408.144123951] [task2a_manipulation]: Picking vanadinite_ore_1 at (-0.064, -0.620, -0.063); dropping at (-0.610, 0.528, 0.040).
+[INFO] [1792133447.694125404] [task2a_manipulation]: Pickup check vanadinite_ore_1: force=1.4512805938720703, tool=(-0.064, -0.620, -0.062), target=(-0.064, -0.620, -0.063).
+[INFO] [1792133447.694434863] [task2a_manipulation]: Checking whether vanadinite_ore_1 follows the magnet; offset=+0.000 m, force=1.4512805938720703, tilt=0.00 deg, tool=(-0.064, -0.620, -0.062), target=(-0.064, -0.620, -0.063).
+[INFO] [1792133451.744081192] [task2a_manipulation]: vanadinite_ore_1 pickup confirmed after lift (ore_followed=False, force=1.465299129486084); carrying it.
+[INFO] [1792133489.244497376] [task2a_manipulation]: vanadinite_ore_1 released in its container (2/4).
+[INFO] [1792133494.944160423] [task2a_manipulation]: Picking vanadinite_ore_2 at (-0.157, -0.809, -0.063); dropping at (-0.610, 0.528, 0.040).
+[INFO] [1792133534.317562193] [task2a_manipulation]: Pickup check vanadinite_ore_2: force=1.4633816480636597, tool=(-0.157, -0.810, -0.062), target=(-0.157, -0.810, -0.063).
+[INFO] [1792133534.317852368] [task2a_manipulation]: Checking whether vanadinite_ore_2 follows the magnet; offset=+0.000 m, force=1.4633816480636597, tilt=0.00 deg, tool=(-0.157, -0.810, -0.062), target=(-0.157, -0.810, -0.063).
+[INFO] [1792133538.317733355] [task2a_manipulation]: vanadinite_ore_2 pickup confirmed after lift (ore_followed=False, force=1.4649639129638672); carrying it.
+[INFO] [1792133577.968096168] [task2a_manipulation]: vanadinite_ore_2 released in its container (3/4).
+[INFO] [1792133583.667561310] [task2a_manipulation]: Picking malachite_ore_1 at (0.005, -0.757, -0.063); dropping at (-0.300, 0.688, 0.040).
+[INFO] [1792133625.875300259] [task2a_manipulation]: Pickup check malachite_ore_1: force=1.4568910598754883, tool=(0.005, -0.757, -0.062), target=(0.005, -0.757, -0.063).
+[INFO] [1792133625.875774143] [task2a_manipulation]: Checking whether malachite_ore_1 follows the magnet; offset=+0.000 m, force=1.4568910598754883, tilt=0.00 deg, tool=(0.005, -0.757, -0.062), target=(0.005, -0.757, -0.063).
+[INFO] [1792133629.925308192] [task2a_manipulation]: malachite_ore_1 pickup confirmed after lift (ore_followed=False, force=1.465244174003601); carrying it.
+[INFO] [1792133677.321292574] [task2a_manipulation]: malachite_ore_1 released in its container (4/4).
+[INFO] [1792133685.812661864] [task2a_manipulation]: All four ores have been picked and released in their containers.

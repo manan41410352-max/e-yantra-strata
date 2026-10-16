@@ -33,9 +33,11 @@ package_name = 'algorithms'
 #     (`chmod +x`), or it installs fine and then refuses to start.
 SCRIPTS = [
     # Your nodes go here, for example:
-    # 'scripts/task1a/task1a.py',
-    # 'scripts/task1b/task1b.py',
-    # 'scripts/task1c/task1c.py',
+    'scripts/task1a/task1A.py',
+    'scripts/task1b/task1B.py',
+    'scripts/task1c/task1C.py',
+    'scripts/task2a/task2A_perception.py',
+    'scripts/task2a/task2A_manipulation.py',
 ]
 
 setup(
