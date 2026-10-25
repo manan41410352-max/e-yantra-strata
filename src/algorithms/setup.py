@@ -2,42 +2,16 @@ from setuptools import setup
 
 package_name = 'algorithms'
 
-# Every node you write goes in this list, and then `colcon build` puts it where
-# `ros2 run algorithms <name>` can find it.
-#
-# The executable name is the FILE NAME, .py included:
-#
-#     ros2 run algorithms task2B_planning.py
-#
-# `ros2 pkg executables algorithms` lists whatever is currently installed, which is the
-# quickest way to check a new file actually made it in. Before you add anything it is
-# empty, and that is correct.
-#
-# START BY COPYING A BOILERPLATE. The ones in boilerplate/ are the starting points and
-# are deliberately NOT in this list: copy the one you want into the matching
-# scripts/task<x>/ folder under your own name, and add that copy here. The originals
-# stay clean to refer back to.
-#
-#     cp boilerplate/task2b_boilerplate.py scripts/task2b/task2B_planning.py
-#     chmod +x scripts/task2b/task2B_planning.py
-#
-# Every script installs into the same directory, so no two may share a name, even in
-# different folders.
-#
-# Three things that catch people out:
-#
-#   * a file added here is not installed until you `colcon build` again;
-#   * `ros2 run` starts the INSTALLED copy, not the one open in your editor, so rebuild
-#     and re-source after every edit;
-#   * a script needs `#!/usr/bin/env python3` on its first line and the executable bit
-#     (`chmod +x`), or it installs fine and then refuses to start.
+# Team 6131 task executables. Keep names unique across task directories.
+# Rebuild after editing: ros2 run executes the installed copy of each script.
 SCRIPTS = [
-    # Your nodes go here, for example:
     'scripts/task1a/task1A.py',
     'scripts/task1b/task1B.py',
     'scripts/task1c/task1C.py',
     'scripts/task2a/task2A_perception.py',
     'scripts/task2a/task2A_manipulation.py',
+    'scripts/task2b/task2B_planning.py',
+    'scripts/task2b/task2B_navigation.py',
 ]
 
 setup(
@@ -52,7 +26,8 @@ setup(
     zip_safe=True,
     maintainer='e-Yantra',
     maintainer_email='support@e-yantra.org',
-    description='Your Task solutions.',
+    author='Agrim Chauhan, Saksham Kaushal, Rayhan Khan, Manan Sood',
+    description='Team 6131 solutions for StrataCobot Tasks 1A, 1B, 1C, 2A and 2B.',
     license='Apache-2.0',
     scripts=SCRIPTS,
 )

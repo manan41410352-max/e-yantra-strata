@@ -18,16 +18,17 @@
 *****************************************************************************************
 '''
 
-# Team ID:          [ Team-ID ]
-# Author List:		[ Names of team members worked on this file separated by Comma: Name1, Name2, ... ]
-# Filename:		    task1c_boilerplate.py
+# Team ID:          [6131]
+# Author List:      [Agrim Chauhan, Saksham Kaushal, Rayhan Khan, Manan Sood]
+# Filename:         task1C.py
+# Task:             1C - StrataCobot (eYRC 2026-27)
 # Functions:
-#			        [ Comma separated list of functions in this file ]
-# Nodes:		    Add your publishing and subscribing node
-#                   Example:
-#			        Publishing Topics  - [ /cmd_vel ]
-#                   Subscribing Topics - [ /ebot_path, /odom, /scan, /etc... ]
-
+#                   __init__, pathcb, odomcb, scancb, mapcb, world_to_map, map_occupied,
+#                   get_obstacle_info, process_navigation, stop_rover, main
+# Nodes:
+#                   Name - [ ebot_nav_node ]
+#                   Publishing Topics - [ /cmd_vel ]
+#                   Subscribing Topics - [ /ebot_path, /odom, /scan, /map, /clock ]
 
 ################### IMPORT MODULES #######################
 
@@ -86,8 +87,7 @@ class ebot_nav(Node):
 
         ############ Topic SUBSCRIPTIONS ############
 
-        # ->  NOTE: The subscription to 'path_topic' below uses the default settings and will
-        #           NEVER receive the route - see the INSTRUCTIONS in 'pathcb' and fix it there.
+        # Receive the latched route even when it was published before startup.
         path_qos = QoSProfile(
             depth=1,
             reliability=QoSReliabilityPolicy.RELIABLE,
@@ -99,7 +99,7 @@ class ebot_nav(Node):
             path_topic,
             self.pathcb,
             path_qos
-        )        
+        )
         self.odom_sub = self.create_subscription(Odometry, odom_topic, self.odomcb, 10)
         self.scan_sub = self.create_subscription(LaserScan, scan_topic, self.scancb, qos_profile_sensor_data)
         map_qos = QoSProfile(
@@ -128,10 +128,8 @@ class ebot_nav(Node):
         self.route = None                                                               # the route to drive (from pathcb())
         self.odom = None                                                                # where the base is (from odomcb())
         self.scan = None                                                                # what the lidar sees (from scancb())
-        
-        ############ ADD YOUR CODE HERE ############
-        self.map = None 
-        ############################################
+
+        self.map = None
 
 
     def pathcb(self, data):
@@ -145,7 +143,6 @@ class ebot_nav(Node):
         Returns:
         '''
 
-        ############ ADD YOUR CODE HERE ############
 
         if self.route is not None:
             return
@@ -164,7 +161,6 @@ class ebot_nav(Node):
             f'Received route with {len(self.route)} waypoints '
             f'in frame {data.header.frame_id}'
         )
-        ############################################
 
 
     def odomcb(self, data):
@@ -196,7 +192,6 @@ class ebot_nav(Node):
 
         self.odom = (x, y, yaw)
 
-        ############################################
 
 
     def scancb(self, data):
@@ -210,11 +205,9 @@ class ebot_nav(Node):
         Returns:
         '''
 
-        ############ ADD YOUR CODE HERE ############
 
         self.scan = data
 
-        ############################################
 
     def mapcb(self, data):
         '''
@@ -227,7 +220,7 @@ class ebot_nav(Node):
             f'Received map: {data.info.width} x {data.info.height}, '
             f'resolution {data.info.resolution:.3f} m'
        )
-        
+
     def world_to_map(self, x, y):
         '''
         Convert world coordinates to occupancy-grid cell coordinates.
@@ -297,7 +290,7 @@ class ebot_nav(Node):
                 right_min = min(right_min, r)
 
         return front_min, left_min, right_min
-    
+
     def process_navigation(self):
         '''
         Description:    Timer function used to drive the eBot along the route.
@@ -306,7 +299,6 @@ class ebot_nav(Node):
         Returns:
         '''
 
-        ############ ADD YOUR CODE HERE ############
 
         # Wait until all required sensor data has arrived.
         if self.route is None:
@@ -317,7 +309,7 @@ class ebot_nav(Node):
 
         if self.scan is None:
             return
-        
+
         # Check whether all waypoints have been completed.
         if self.current_waypoint >= len(self.route):
             self.stop_rover()
@@ -446,7 +438,6 @@ class ebot_nav(Node):
 
         self.cmd_pub.publish(cmd)
 
-        ############################################
 
     def stop_rover(self):
         '''

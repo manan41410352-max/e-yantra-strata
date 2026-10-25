@@ -24,9 +24,10 @@ SC-*-task-*/
 
 .DS_Store
 
-# Local submission archives and development recordings.
+# Local evaluator records, submission archives and development recordings.
 *.zip
 src/SC#*_detection.png
-task2a_validation/
+results/
+submissions/
 .env
 .env.*

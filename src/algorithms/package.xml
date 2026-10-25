@@ -3,7 +3,11 @@
 <package format="3">
   <name>algorithms</name>
   <version>2.0.0</version>
-  <description>StrataCobot Task 1 and Task 2A solution nodes.</description>
+  <description>Team 6131 solutions for StrataCobot Tasks 1A, 1B, 1C, 2A and 2B.</description>
+  <author>Agrim Chauhan</author>
+  <author>Saksham Kaushal</author>
+  <author>Rayhan Khan</author>
+  <author>Manan Sood</author>
   <maintainer email="support@e-yantra.org">e-Yantra</maintainer>
   <license>Apache-2.0</license>
 
@@ -11,13 +15,16 @@
   <exec_depend>cv_bridge</exec_depend>
   <exec_depend>python3-opencv</exec_depend>
   <exec_depend>python3-numpy</exec_depend>
+  <exec_depend>python3-scipy</exec_depend>
   <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>nav_msgs</exec_depend>
   <exec_depend>sensor_msgs</exec_depend>
   <exec_depend>std_msgs</exec_depend>
   <exec_depend>std_srvs</exec_depend>
   <exec_depend>control_msgs</exec_depend>
   <exec_depend>controller_manager_msgs</exec_depend>
   <exec_depend>tf2_ros</exec_depend>
+  <exec_depend>tf2_geometry_msgs</exec_depend>
 
   <export>
     <build_type>ament_python</build_type>

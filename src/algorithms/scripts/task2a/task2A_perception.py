@@ -1,6 +1,22 @@
 #!/usr/bin/env python3
 """Detect the Task 2A ores and publish their live positions in ``base_link``."""
 
+# Team ID:          [6131]
+# Author List:      [Agrim Chauhan, Saksham Kaushal, Rayhan Khan, Manan Sood]
+# Filename:         task2A_perception.py
+# Task:             2A - StrataCobot (eYRC 2026-27)
+# Functions:
+#                   _rotate_points, __init__, _color_cb, _depth_cb, _info_cb, _find_regions,
+#                   _point_in_base, _assign_ids, _process, main
+# Nodes:
+#                   Name - [ task2a_perception ]
+#                   Publishing Topics - [ /tf ]
+#                   Subscribing Topics - [ /camera/camera/color/image_raw,
+#                       /camera/camera/aligned_depth_to_color/image_raw,
+#                       /camera/camera/color/camera_info, /tf, /tf_static, /clock ]
+
+################### IMPORT MODULES #######################
+
 import math
 import sys
 

@@ -1,6 +1,25 @@
 #!/usr/bin/env python3
 """Closed-loop Task 2A pick-and-sort controller for the UR7e magnet."""
 
+# Team ID:          [6131]
+# Author List:      [Agrim Chauhan, Saksham Kaushal, Rayhan Khan, Manan Sood]
+# Filename:         task2A_manipulation.py
+# Task:             2A - StrataCobot (eYRC 2026-27)
+# Functions:
+#                   __init__, _now_seconds, _tcp_cb, _joints_cb, _status_cb, _force_cb, _position,
+#                   _tool_alignment, _publish_twist, _publish_joints, _stop, _move_toward,
+#                   _change_phase, _switch, _switch_result, _fresh_ore_transforms, _drop_target,
+#                   _side_x, _start_next_ore, _target_transform_position, _refresh_pick_target,
+#                   _begin_capture_check, _call_magnet, _service_result, _held, _fault, _step, main
+# Nodes:
+#                   Name - [ task2a_manipulation ]
+#                   Publishing Topics - [ /delta_twist_cmds, /delta_joint_cmds ]
+#                   Subscribing Topics - [ /tcp_pose_raw, /joint_states, /arm_status,
+#                       /ur7e/end_effector/force_magnitude, /tf, /tf_static, /clock ]
+#                   Service Clients - [ /ur_arm_controller/switch_controller, /magnet ]
+
+################### IMPORT MODULES #######################
+
 import math
 import sys
 

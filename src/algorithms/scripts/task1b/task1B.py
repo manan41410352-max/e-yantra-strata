@@ -18,16 +18,18 @@
 *****************************************************************************************
 '''
 
-# Team ID:          [ Team-ID ]
-# Author List:		[ Names of team members worked on this file separated by Comma: Name1, Name2, ... ]
-# Filename:		    task1b_boilerplate.py
+# Team ID:          [6131]
+# Author List:      [Agrim Chauhan, Saksham Kaushal, Rayhan Khan, Manan Sood]
+# Filename:         task1B.py
+# Task:             1B - StrataCobot (eYRC 2026-27)
 # Functions:
-#			        [ Comma separated list of functions in this file ]
-# Nodes:		    Add your publishing and subscribing node
-#                   Example:
-#			        Publishing Topics  - [ /delta_twist_cmds, /delta_joint_cmds ]
-#                   Subscribing Topics - [ /tcp_pose_raw, /joint_states, /etc... ]
-
+#                   __init__, tcpposecb, jointstatecb, armstatuscb, switch_controller,
+#                   switch_finished, publish_twist, publish_joint, process_waypoints, main
+# Nodes:
+#                   Name - [ arm_waypoints_node ]
+#                   Publishing Topics - [ /delta_twist_cmds, /delta_joint_cmds ]
+#                   Subscribing Topics - [ /tcp_pose_raw, /joint_states, /arm_status, /clock ]
+#                   Service Clients - [ /ur_arm_controller/switch_controller ]
 
 ################### IMPORT MODULES #######################
 
@@ -139,11 +141,11 @@ class arm_waypoints(Node):
         self.tcp_pose = None                                                            # tool pose variable (from tcpposecb())
         self.joint_angles = None                                                        # joint feedback variable (from jointstatecb())
         self.arm_status = None                                                          # arm state code variable (from armstatuscb())
-        
+
         self.current_waypoint = 0
         self.holding = False
         self.hold_start_time = None
-        
+
         # Joint-space unfolding
         self.unfold_pose = [
             -2.0216,
@@ -163,14 +165,9 @@ class arm_waypoints(Node):
         self.phase_start_time = None
         self.switch_future = None                                                   # activating the twist controller to start with
 
-        ############ ADD YOUR CODE HERE ############
 
-        # INSTRUCTIONS & HELP :
 
-        #	->  Add any variable your motion needs to keep between cycles.
-        #       ->  HINT: Which waypoint you are on, and what the arm is doing about it.
 
-        ############################################
 
 
     def tcpposecb(self, data):
@@ -184,9 +181,7 @@ class arm_waypoints(Node):
         Returns:
         '''
 
-        ############ ADD YOUR CODE HERE ############
         self.tcp_pose = data.pose
-        ############################################
 
 
     def jointstatecb(self, data):
@@ -200,15 +195,12 @@ class arm_waypoints(Node):
         Returns:
         '''
 
-        ############ ADD YOUR CODE HERE ############
 
-        # INSTRUCTIONS & HELP :
 
         self.joint_angles = [
             data.position[data.name.index(j)]
             for j in joint_names
         ]
-        ############################################
 
 
     def armstatuscb(self, data):
@@ -222,9 +214,7 @@ class arm_waypoints(Node):
         Returns:
         '''
 
-        ############ ADD YOUR CODE HERE ############
         self.arm_status = data.data
-        ############################################
 
 
     def switch_controller(self, controller):
@@ -240,7 +230,6 @@ class arm_waypoints(Node):
             success     (bool):     Whether the controller was activated
         '''
 
-        ############ ADD YOUR CODE HERE ############
 
         if not self.switch_cli.service_is_ready():
             return False
@@ -259,7 +248,6 @@ class arm_waypoints(Node):
         self.switch_future = self.switch_cli.call_async(req)
 
         return True
-        ############################################
 
     def switch_finished(self):
 
@@ -315,7 +303,6 @@ class arm_waypoints(Node):
         Returns:
         '''
 
-        ############ ADD YOUR CODE HERE ############
 
         # Wait until all required feedback is available
         if self.tcp_pose is None:
@@ -674,7 +661,6 @@ class arm_waypoints(Node):
             )
 
             return
-            ############################################
 
     def publish_twist(self, vx, vy, vz):
 

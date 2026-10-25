@@ -19,13 +19,18 @@
 '''
 
 # Team ID:          [6131]
-# Author List:		[Agrim Chauhan, Saksham Kaushal, Rayhan Khan, Manan Sood]
-# Filename:		    ore_detector.py
+# Author List:      [Agrim Chauhan, Saksham Kaushal, Rayhan Khan, Manan Sood]
+# Filename:         task1A.py
+# Task:             1A - StrataCobot (eYRC 2026-27)
 # Functions:
-#                   detect_ores, __init__, depthimagecb, colorimagecb, caminfocb, process_image, main
+#                   detect_ores, __init__, depthimagecb, colorimagecb, caminfocb, process_image,
+#                   main
 # Nodes:
+#                   Name - [ ore_tf_publisher ]
 #                   Publishing Topics - [ /tf ]
-#                   Subscribing Topics - [ /camera/camera/color/image_raw, /camera/camera/aligned_depth_to_color/image_raw, /camera/camera/color/camera_info ]
+#                   Subscribing Topics - [ /camera/camera/color/image_raw,
+#                       /camera/camera/aligned_depth_to_color/image_raw,
+#                       /camera/camera/color/camera_info, /tf, /tf_static ]
 
 ################### IMPORT MODULES #######################
 
@@ -78,7 +83,6 @@ def detect_ores(image):
     center_ore_list = []
     ore_type_list = []
 
-    ############ ADD YOUR CODE HERE ############
     hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
 
     color_ranges = {
@@ -134,7 +138,7 @@ def detect_ores(image):
                 continue
             #Get the bound rectangle of the ore
             x, y, w, h = cv2.boundingRect(contour)
-            
+
             # Calculate contour centroid
             M = cv2.moments(contour)
 
@@ -204,7 +208,6 @@ class ore_tf(Node):
         self.depth_image = None                                                         # depth image variable (from depthimagecb())
         self.cam_info = None                                                            # camera intrinsics variable (from caminfocb())
         self.depth_frame=None  #Depth image frame name
-        ############ ADD YOUR CODE HERE ############
 
         self.fx = None
         self.fy = None
@@ -216,7 +219,6 @@ class ore_tf(Node):
             'malachite_ore': {},
             'vanadinite_ore': {}
         }
-        ############################################
 
 
     def depthimagecb(self, data):
@@ -230,14 +232,12 @@ class ore_tf(Node):
         Returns:
         '''
 
-        ############ ADD YOUR CODE HERE ############
 
         self.depth_image = self.bridge.imgmsg_to_cv2(
             data,
             desired_encoding='passthrough'
         )
         self.depth_frame = data.header.frame_id
-        ############################################
 
 
     def colorimagecb(self, data):
@@ -251,13 +251,11 @@ class ore_tf(Node):
         Returns:
         '''
 
-        ############ ADD YOUR CODE HERE ############
 
         self.cv_image = self.bridge.imgmsg_to_cv2(
             data,
             desired_encoding='bgr8'
         )
-        ############################################
 
 
     def caminfocb(self, data):
@@ -271,13 +269,11 @@ class ore_tf(Node):
         Returns:
         '''
 
-        ############ ADD YOUR CODE HERE ############
 
         self.fx = float(data.k[0])
         self.fy = float(data.k[4])
         self.cx = float(data.k[2])
         self.cy = float(data.k[5])
-        ############################################
 
 
     def process_image(self):
@@ -289,7 +285,6 @@ class ore_tf(Node):
         Returns:
         '''
 
-        ############ ADD YOUR CODE HERE ############
 
         # Make sure all required camera data has arrived
         if (
@@ -315,7 +310,7 @@ class ore_tf(Node):
             )
         except Exception:
             return
-        
+
         # Assign stable IDs to the detected ores
         detections_by_type = {}
 
@@ -467,7 +462,7 @@ class ore_tf(Node):
                 (0, 0, 0),
                 1
             )
-    
+
             # Save the annotated camera image
             cv2.imwrite(
             'SC#6131_task1A_detection.png',
@@ -478,7 +473,6 @@ class ore_tf(Node):
             cv2.imshow('Task 1A - Ore Detection', self.cv_image)
             cv2.waitKey(1)
 
-        ############################################
 
 
 ##################### FUNCTION DEFINITION #######################
