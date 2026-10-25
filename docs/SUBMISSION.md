@@ -23,8 +23,10 @@ not been unpacked, modified or rebuilt. The surrounding submission ZIPs were upd
 with team headers on 21 October 2026. Python syntax trees were compared before and
 after formatting to confirm that the evaluated implementations are unchanged.
 
-The original outer archives are retained under `results/task2a/submission-original/`
-and `results/task2b/submission-original/`.
+The original outer archives are retained locally under
+`results/task2a/submission-original/` and `results/task2b/submission-original/`. The
+`results/` and `submissions/` folders are excluded from Git, so the signed result files
+remain in the local workspace and are not uploaded to this repository.
 
 ## Source versions
 

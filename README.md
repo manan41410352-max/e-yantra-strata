@@ -5,8 +5,8 @@ e-Yantra Robotics Competition 2026–27 · Ubuntu 24.04 · ROS 2 Jazzy · Gazebo
 **Authors:** Agrim Chauhan, Saksham Kaushal, Rayhan Khan, Manan Sood
 
 Solutions for Tasks 1A, 1B, 1C, 2A and 2B. Saved official evaluator runs achieved
-**50/50 for Task 2A** and **50/50 for Task 2B**. See the [evaluation records](results/README.md)
-and [submission guide](docs/SUBMISSION.md) for the corresponding artifacts.
+**50/50 for Task 2A** and **50/50 for Task 2B**. See the
+[submission guide](docs/SUBMISSION.md) for the prepared archives and recording requirements.
 
 ## Workspace layout
 
@@ -20,7 +20,7 @@ ros2_ws/
 │   ├── eyrc-sc-evaluator       # Official evaluator
 │   └── requirements.sh        # Official dependency installer
 ├── docs/                      # Run and submission instructions
-├── results/                   # Preserved evaluator results and score logs
+├── results/                   # Local evaluator results and score logs (not tracked)
 ├── submissions/               # Task 2A and 2B submission ZIPs
 ├── build/                     # Existing colcon build output
 └── install/                   # Installed ROS packages
@@ -90,5 +90,5 @@ upstream byte for byte. The team additions are the task solutions, package metad
 workspace documentation and saved results.
 
 Original e-Yantra notices and the [UR description license](src/ur_description/LICENSE)
-are retained. Local results, submission archives, build output and installed packages
-are excluded from Git.
+are retained. Local evaluator results, submission archives, build output and installed packages
+are excluded from Git; the verified scores are documented in the submission guide.
